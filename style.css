@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata:wght@400&display=swap');
+
+.svgName {
+    font-family: 'Alata', sans-serif;
+    font-size: 30px;
+    fill: none;
+    stroke: transparent;
+    stroke-width: 1;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: stroke-draw-name 12s forwards, stroke-color-name 4s forwards;
+}
+
+.svgProfession {
+    font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    fill: none;
+    stroke: transparent;
+    stroke-width: 1;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation-delay: 3s;
+    animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
+}
+
+@keyframes stroke-draw-name {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes stroke-color-name {
+    from {
+        stroke: transparent;
+    }
+
+    to {
+        stroke: white;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .svgName {
+        animation: stroke-draw-name 12s forwards, stroke-color-name-light 4s forwards;
+    }
+    .svgProfession {
+        animation: stroke-draw-name 4s forwards, stroke-color-name-light 2s forwards;
+        animation-delay: 3s;
+    }
+    .wallpaper {
+        background-color: #E0E1DD;
+    }
+
+    footer {
+        background-color: #AEB0AC;
+    }
+
+    footer p {
+        color: #181B19;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .svgName {
+        animation: stroke-draw-name 12s forwards, stroke-color-name 4s forwards;
+    }
+    .svgProfession {
+        animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
+        animation-delay: 3s;
+    }
+    .wallpaper {
+        background-color: #181B19;
+    }
+    p, h1, h2, h3, h4, footer p {
+        color: #E0E1DD;
+    }
+
+    footer {
+        background-color: #141715;
+    }
+}
+
+@keyframes stroke-color-name-light {
+    from {
+        stroke: transparent;
+    }
+
+    to {
+        stroke: black;
+    }
+    
+}
+
+.wallpaper {
+}
+
+/* Footer styles */
+footer {
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    font-weight: bold;
+    margin: 0;
+    padding: 5px;
+}
+
+footer a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer .footer-container div {
+    flex: 1;
+    min-width: 150px;
+}
