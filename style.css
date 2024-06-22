@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata:wght@400&display=swap');
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .svgName {
     font-family: 'Alata', sans-serif;
     font-size: 30px;
@@ -99,6 +105,7 @@ footer {
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    margin-top: auto;
 }
 
 footer p {
