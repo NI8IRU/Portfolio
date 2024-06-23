@@ -6,6 +6,40 @@ body {
     flex-direction: column;
 }
 
+/* Gestione Navbar */
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+button:hover {
+    background-color: white;
+    transition: 0.5s;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    &:hover {
+        &:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    }
+}
+
+/* Gestione SVG */
 .svgName {
     font-family: 'Alata', sans-serif;
     font-size: 30px;
@@ -29,28 +63,31 @@ body {
     animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
 }
 
-.hover-underline-animation {
-    display: inline-block;
-    position: relative;
-}
-
-.hover-underline-animation:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.hover-underline-animation:hover {
-    &:after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
+@keyframes stroke-draw-name {
+    to {
+        stroke-dashoffset: 0;
     }
+}
+
+@keyframes stroke-color-name {
+    from {
+        stroke: transparent;
+    }
+
+    to {
+        stroke: #E0E1DD;
+    }
+}
+
+@keyframes stroke-color-name-light {
+    from {
+        stroke: transparent;
+    }
+
+    to {
+        stroke: black;
+    }
+
 }
 
 /* Footer styles */
@@ -86,33 +123,6 @@ footer .footer-container {
 footer .footer-container div {
     flex: 1;
     min-width: 150px;
-}
-
-@keyframes stroke-draw-name {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-@keyframes stroke-color-name {
-    from {
-        stroke: transparent;
-    }
-
-    to {
-        stroke: #E0E1DD;
-    }
-}
-
-@keyframes stroke-color-name-light {
-    from {
-        stroke: transparent;
-    }
-
-    to {
-        stroke: black;
-    }
-
 }
 
 @media (prefers-color-scheme: light) {
@@ -156,6 +166,14 @@ footer .footer-container div {
         &:after {
             color: #181B19;
         }
+    }
+
+    #hamburgerMenu {
+        color: #181B19;
+    }
+    
+    button:hover {
+        background-color: #181B19;
     }
 }
 
@@ -209,5 +227,9 @@ footer .footer-container div {
 
     #hamburgerMenu {
         color: #E0E1DD;
+    }
+    
+    button:hover {
+        background-color: #E0E1DD;
     }
 }
