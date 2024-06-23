@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata:wght@400&display=swap');
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.svgName {
+    font-family: 'Alata', sans-serif;
+    font-size: 30px;
+    fill: none;
+    stroke: transparent;
+    stroke-width: 1;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: stroke-draw-name 12s forwards, stroke-color-name 4s forwards;
+}
+
+.svgProfession {
+    font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    fill: none;
+    stroke: transparent;
+    stroke-width: 1;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation-delay: 3s;
+    animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover {
+    &:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+/* Footer styles */
+footer {
+    color: #E0E1DD;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p {
+    font-weight: bold;
+    margin: 0;
+    padding: 5px;
+}
+
+footer a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer .footer-container div {
+    flex: 1;
+    min-width: 150px;
+}
+
+@keyframes stroke-draw-name {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes stroke-color-name {
+    from {
+        stroke: transparent;
+    }
+
+    to {
+        stroke: #E0E1DD;
+    }
+}
+
+@keyframes stroke-color-name-light {
+    from {
+        stroke: transparent;
+    }
+
+    to {
+        stroke: black;
+    }
+
+}
+
+@media (prefers-color-scheme: light) {
+    .svgName {
+        animation: stroke-draw-name 12s forwards, stroke-color-name-light 4s forwards;
+    }
+
+    .svgProfession {
+        animation: stroke-draw-name 4s forwards, stroke-color-name-light 2s forwards;
+        animation-delay: 3s;
+    }
+
+    .wallpaper {
+        background-color: #E0E1DD;
+    }
+
+    footer {
+        background-color: #AEB0AC;
+    }
+
+    footer p,
+    nav a {
+        color: #181B19;
+    }
+
+    nav {
+        border-bottom: 2px solid #181B19;
+    }
+
+    .hover-underline-animation {
+        color: #181B19;
+    }
+
+    .hover-underline-animation:after {
+        background-color: #181B19;
+    }
+
+    .hover-underline-animation:hover {
+        color: #181B19;
+
+        &:after {
+            color: #181B19;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .svgName {
+        animation: stroke-draw-name 12s forwards, stroke-color-name 4s forwards;
+    }
+
+    .svgProfession {
+        animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
+        animation-delay: 3s;
+    }
+
+    .wallpaper {
+        background-color: #181B19;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    footer p,
+    nav a {
+        color: #E0E1DD;
+    }
+
+    footer {
+        background-color: #141715;
+    }
+
+    nav {
+        border-bottom: 2px solid #E0E1DD;
+    }
+
+    .hover-underline-animation {
+        color: #E0E1DD;
+    }
+
+    .hover-underline-animation:after {
+        background-color: #E0E1DD;
+    }
+
+    .hover-underline-animation:hover {
+        color: #E0E1DD;
+
+        &:after {
+            color: #E0E1DD;
+        }
+    }
+
+    #hamburgerMenu {
+        color: #E0E1DD;
+    }
+}
