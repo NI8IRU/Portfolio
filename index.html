@@ -17,7 +17,7 @@
 </head>
 
 <header>
-  <nav class="navbar navbar-expand-sm static-top">
+  <nav class="navbar navbar-expand-sm static-top" onmouseover="navbarSvgWorkFlow('in')" onmouseleave="navbarSvgWorkFlow('out')">
     <div class="container-fluid">
       <a class="navbar-brand hover-underline-animation ms-3 visible" href="#">Home</a>
       <button id="hamburgerMenuBtn" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarElements"
@@ -45,11 +45,10 @@
 <body class="wallpaper">
   <div id="svgContainer" class="text-center my-auto">
     <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
-      <text class="svgName" x="50%" y="45%" text-anchor="middle" dominant-baseline="middle">Francesco
+      <text id="name" class="svgName" x="50%" y="45%" text-anchor="middle" dominant-baseline="middle">Francesco
         Tornambè</text>
-      <text class="svgProfession" x="50%" y="55%" text-anchor="middle" dominant-baseline="middle">Full-Stack
+      <text id="profession" class="svgProfession" x="50%" y="55%" text-anchor="middle" dominant-baseline="middle">Full-Stack
         Developer</text>
-      <text class="svgTest" x="50%" y="10%" text-anchor="middle" dominant-baseline="middle">Test Text</text>
     </svg>
   </div>
 </body>

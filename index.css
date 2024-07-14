@@ -40,18 +40,6 @@ button:hover {
 }
 
 /* Gestione SVG */
-.svgTest {
-    font-family: 'Alata', sans-serif;
-    font-size: 30px;
-    fill: none;
-    stroke: white;
-    stroke-width: 1;
-    stroke-dasharray: 70;
-    &:hover {
-        animation: testText 3s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite
-    }
-}
-
 .svgName {
     font-family: 'Alata', sans-serif;
     font-size: 30px;
@@ -60,7 +48,7 @@ button:hover {
     stroke-width: 1;
     stroke-dasharray: 300;
     stroke-dashoffset: 300;
-    animation: stroke-draw-name 12s forwards, stroke-color-name 4s forwards;
+    animation: stroke-draw-name 12s forwards, stroke-color-name-dark 4s forwards;
 }
 
 .svgProfession {
@@ -72,10 +60,10 @@ button:hover {
     stroke-dasharray: 300;
     stroke-dashoffset: 300;
     animation-delay: 3s;
-    animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
+    animation: stroke-draw-name 4s forwards, stroke-color-name-dark 2s forwards;
 }
 
-@keyframes testText {
+@keyframes name-work-flow {
     100%{
         stroke-dashoffset: 160;
     }
@@ -87,13 +75,33 @@ button:hover {
     }
 }
 
-@keyframes stroke-color-name {
+@keyframes stroke-color-name-dark {
     from {
         stroke: transparent;
     }
 
     to {
         stroke: #E0E1DD;
+    }
+}
+
+@keyframes fade-out-dark {
+    from {
+        stroke: #E0E1DD;
+    }
+
+    to {
+        stroke: transparent;
+    }
+}
+
+@keyframes fade-out-light {
+    from {
+        stroke: black;
+    }
+
+    to {
+        stroke: transparent;
     }
 }
 
@@ -197,11 +205,11 @@ footer .footer-container div {
 
 @media (prefers-color-scheme: dark) {
     .svgName {
-        animation: stroke-draw-name 12s forwards, stroke-color-name 4s forwards;
+        animation: stroke-draw-name 12s forwards, stroke-color-name-dark 4s forwards;
     }
 
     .svgProfession {
-        animation: stroke-draw-name 4s forwards, stroke-color-name 2s forwards;
+        animation: stroke-draw-name 4s forwards, stroke-color-name-dark 2s forwards;
         animation-delay: 3s;
     }
 
