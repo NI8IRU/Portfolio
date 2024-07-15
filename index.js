@@ -1,4 +1,7 @@
-const startTime = new Date()
+let startTime = new Date(),
+pinTime,
+navbarPosition = "outside",
+navbarWfActivationBeforeAnimEnding = false
 
 function getTema() {
     // // Ottengo il tema della pagina
@@ -12,37 +15,63 @@ function getTema() {
     return tema
 }
 
-function measureSecPassed() {
-    const endTime = new Date()
-    let timeDiff = endTime - startTime; //in ms
-    // strip the ms
-    timeDiff /= 1000
-  
-    // get seconds 
-    let seconds = Math.round(timeDiff)
-    return seconds
-  }
+function measureSecPassed(startTime, endTime = new Date()) {
+    return (endTime - startTime) / 1000; // Calcola il tempo passato in secondi
+}
 
-function navbarSvgWorkFlow(direction) {
-    let svgName = document.getElementById("name")
 
-    //Imposto un animazione infinità se il mouse e sopra la navbar
-    //Il testo viene resettato se il mouse si sposta fuori
-    if (measureSecPassed() > 4) {
-        if (direction === "in") {
-            svgName.style.animation = "name-work-flow 3s cubic-bezier(0.1, 0.2, 0.1, 0.3) infinite"
-            svgName.style.stroke = getTema() === "light" ? "black" : "#E0E1DD"
-            svgName.style.strokeDasharray = "80"
-        } else if (direction === "out") {
-            const fadeOut = getTema() === "light" ? "fade-out-light 1.5s forwards" : "fade-out-dark 1.5s forwards"
-            svgName.style.animation = "name-work-flow 3s cubic-bezier(0.1, 0.2, 0.1, 0.3) infinite, " + fadeOut
+  function navbarSvgWorkFlow(direction) {
+    let svgName = document.getElementById("name");
+
+    // Controlla se sono passati più di 4 secondi dall'inizio
+    if (measureSecPassed(startTime) > 4) {
+        if (direction === "in" && navbarPosition === "outside" && !navbarWfActivationBeforeAnimEnding) {
+            navbarPosition = "inside"
+
+            // Avvia l'animazione inversa
+            svgName.style.animation = "stroke-draw-name-reverse 1.5s forwards";
+            svgName.style.strokeDashoffset = "0";
+            svgName.style.stroke = getTema() === "light" ? "black" : "#E0E1DD";
+
+            pinTime = new Date();
+
             setTimeout(() => {
-                svgName.style.animation = null
-                svgName.style.strokeDasharray = null
-            }, 1500);
+                // Cambia il testo e avvia l'animazione di disegno
+                svgName.textContent = "Where to go?";
+                svgName.style.strokeDashoffset = "300";
+                svgName.style.animation = "stroke-draw-name 3s forwards";
+            }, 2000);
+        } else if (direction === "out" && navbarPosition === "inside" && !navbarWfActivationBeforeAnimEnding) {
+            navbarPosition = "outside"
+
+            let endingAnimationTime = new Date(pinTime.getTime() + 4500);
+
+            let timePassed = measureSecPassed(pinTime, endingAnimationTime);
+            let timeoutTime = 3 - timePassed < 0 ? 0 : (3 - timePassed) * 1000;
+
+            setTimeout(() => {
+                const fadeOut = getTema() === "light" ? "fade-out-light 1.5s forwards" : "fade-out-dark 1.5s forwards";
+                
+                // Avvia l'animazione inversa
+                svgName.style.animation = "stroke-draw-name-reverse 1.5s forwards";
+                svgName.style.strokeDashoffset = "0";
+
+                setTimeout(() => {
+                    // Ripristina il testo originale e rimuove le animazioni
+                    startTime = new Date();
+                    svgName.textContent = "Francesco Tornambè";
+                    svgName.style.animation = null;
+                    svgName.style.strokeDasharray = null;
+                    svgName.style.strokeDashoffset = null;
+                }, 2000);
+            }, timeoutTime);
         }
+        navbarWfActivationBeforeAnimEnding = false
+    } else {
+        navbarWfActivationBeforeAnimEnding = true
     }
 }
+
 
 function hamburgerMenuWorkFlow(action) {
 
