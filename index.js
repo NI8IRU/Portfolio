@@ -21,7 +21,8 @@ function measureSecPassed(startTime, endTime = new Date()) {
 
 
   function navbarSvgWorkFlow(direction) {
-    let svgName = document.getElementById("name");
+    let svgName = document.getElementById("name"),
+    svgProfession = document.getElementById("profession")
 
     // Controlla se sono passati più di 4 secondi dall'inizio
     if (measureSecPassed(startTime) > 4) {
@@ -32,6 +33,9 @@ function measureSecPassed(startTime, endTime = new Date()) {
             svgName.style.animation = "stroke-draw-name-reverse 1.5s forwards";
             svgName.style.strokeDashoffset = "0";
             svgName.style.stroke = getTema() === "light" ? "black" : "#E0E1DD";
+            svgProfession.style.animation = "stroke-draw-name-reverse 1.5s forwards";
+            svgProfession.style.strokeDashoffset = "0";
+            svgProfession.style.stroke = getTema() === "light" ? "black" : "#E0E1DD";
 
             pinTime = new Date();
 
@@ -55,14 +59,17 @@ function measureSecPassed(startTime, endTime = new Date()) {
                 // Avvia l'animazione inversa
                 svgName.style.animation = "stroke-draw-name-reverse 1.5s forwards";
                 svgName.style.strokeDashoffset = "0";
+                startTime = new Date(new Date().getTime() + 2000);
 
                 setTimeout(() => {
                     // Ripristina il testo originale e rimuove le animazioni
-                    startTime = new Date();
                     svgName.textContent = "Francesco Tornambè";
                     svgName.style.animation = null;
                     svgName.style.strokeDasharray = null;
                     svgName.style.strokeDashoffset = null;
+                    svgProfession.style.animation = null;
+                    svgProfession.style.strokeDasharray = null;
+                    svgProfession.style.strokeDashoffset = null;
                 }, 2000);
             }, timeoutTime);
         }
